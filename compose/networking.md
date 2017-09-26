@@ -150,9 +150,20 @@ Instead of (or as well as) specifying your own networks, you can also change the
 
 If you want your containers to join a pre-existing network, use the [`external` option](compose-file.md#network-configuration-reference):
 
+    version: "3.1"
+
     networks:
-      default:
-        external:
-          name: my-pre-existing-network
+        default:
+            external:
+                name: my-pre-existing-network
+    services:
+        my_mongo_db:
+            image: "mongo"
+            networks:
+                default:
+                    ipv4_address: 172.16.0.3
+            ports: 
+                - "27017:27017"
+            restart: always
 
 Instead of attempting to create a network called `[projectname]_default`, Compose will look for a network called `my-pre-existing-network` and connect your app's containers to it.
