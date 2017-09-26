@@ -1366,7 +1366,7 @@ configuration. Two different syntax variants are supported.
 
 > **Note**: The secret must already exist or be
 > [defined in the top-level `secrets` configuration](#secrets-configuration-reference)
-> of this stack file, or stack deployment will fail.
+> of this stack file, or stack deployment will fail. Docker secrets are only available to swarm services, not to standalone containers. To use this feature, consider adapting your container to run as a service with a scale of 1.
 
 #### Short syntax
 
